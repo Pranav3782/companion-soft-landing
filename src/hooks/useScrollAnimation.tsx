@@ -54,7 +54,7 @@ export const AnimateOnScroll = ({
   className = "",
   animation = "fade-up",
   delay = 0,
-  duration = 600,
+  duration = 500,
   threshold = 0.1,
 }: AnimateOnScrollProps) => {
   const { ref, isVisible } = useScrollAnimation({ threshold });
@@ -62,13 +62,13 @@ export const AnimateOnScroll = ({
   const baseStyles: React.CSSProperties = {
     transitionProperty: "opacity, transform",
     transitionDuration: `${duration}ms`,
-    transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+    transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)", // Premium easing
     transitionDelay: `${delay}ms`,
   };
 
   const animations = {
     "fade-up": {
-      hidden: { opacity: 0, transform: "translateY(40px)" },
+      hidden: { opacity: 0, transform: "translateY(16px)" },
       visible: { opacity: 1, transform: "translateY(0)" },
     },
     "fade-in": {
@@ -76,15 +76,15 @@ export const AnimateOnScroll = ({
       visible: { opacity: 1 },
     },
     "scale-in": {
-      hidden: { opacity: 0, transform: "scale(0.9)" },
+      hidden: { opacity: 0, transform: "scale(0.95)" },
       visible: { opacity: 1, transform: "scale(1)" },
     },
     "slide-left": {
-      hidden: { opacity: 0, transform: "translateX(60px)" },
+      hidden: { opacity: 0, transform: "translateX(24px)" },
       visible: { opacity: 1, transform: "translateX(0)" },
     },
     "slide-right": {
-      hidden: { opacity: 0, transform: "translateX(-60px)" },
+      hidden: { opacity: 0, transform: "translateX(-24px)" },
       visible: { opacity: 1, transform: "translateX(0)" },
     },
   };

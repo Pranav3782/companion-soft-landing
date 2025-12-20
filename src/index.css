@@ -176,7 +176,45 @@
     background-image: var(--gradient-sage);
   }
 
-  /* Animations */
+  /* Premium Animations - Calm, breathing motion */
+  
+  /* Hero entrance - gentle rise */
+  @keyframes hero-entrance {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Subtle gradient shift for highlighted text */
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Scroll reveal animation */
+  @keyframes scroll-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   @keyframes fade-up {
     from {
       opacity: 0;
@@ -226,36 +264,52 @@
     }
   }
 
-  @keyframes slide-up {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fade-in-smooth {
-    from {
-      opacity: 0;
-      transform: translateY(15px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-slide-up {
+  /* Hero entrance animations with stagger */
+  .animate-hero-badge {
     opacity: 0;
-    animation: slide-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: hero-entrance 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 0ms;
   }
 
-  .animate-fade-in-smooth {
+  .animate-hero-heading {
     opacity: 0;
-    animation: fade-in-smooth 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: hero-entrance 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 100ms;
+  }
+
+  .animate-hero-subheading {
+    opacity: 0;
+    animation: hero-entrance 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 200ms;
+  }
+
+  .animate-hero-buttons {
+    opacity: 0;
+    animation: hero-entrance 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 300ms;
+  }
+
+  /* Animated gradient text - slow, subtle shift */
+  .text-gradient-animated {
+    background: linear-gradient(
+      90deg,
+      hsl(152 55% 40%) 0%,
+      hsl(152 60% 50%) 25%,
+      hsl(160 55% 45%) 50%,
+      hsl(152 60% 50%) 75%,
+      hsl(152 55% 40%) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-shift 10s ease-in-out infinite;
+  }
+
+  /* Scroll-triggered reveal animation */
+  .animate-scroll-reveal {
+    opacity: 0;
+    animation: scroll-reveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
   .animate-fade-up {
@@ -278,12 +332,25 @@
     animation: blob 8s ease-in-out infinite;
   }
 
+  /* Animation delays */
+  .animation-delay-50 {
+    animation-delay: 50ms;
+  }
+
   .animation-delay-100 {
     animation-delay: 100ms;
   }
 
+  .animation-delay-150 {
+    animation-delay: 150ms;
+  }
+
   .animation-delay-200 {
     animation-delay: 200ms;
+  }
+
+  .animation-delay-250 {
+    animation-delay: 250ms;
   }
 
   .animation-delay-300 {
@@ -300,5 +367,27 @@
 
   .animation-delay-600 {
     animation-delay: 600ms;
+  }
+
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-hero-badge,
+    .animate-hero-heading,
+    .animate-hero-subheading,
+    .animate-hero-buttons,
+    .animate-scroll-reveal,
+    .animate-fade-up,
+    .animate-fade-in,
+    .animate-scale-in,
+    .text-gradient-animated {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    
+    .animate-float,
+    .animate-blob {
+      animation: none;
+    }
   }
 }
