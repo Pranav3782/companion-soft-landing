@@ -29,22 +29,22 @@ const HeroSection = () => {
 
             {/* Headline */}
             <AnimateOnScroll animation="fade-up" delay={100}>
-              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6">
-                Meet people who
+              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 animate-hero-text">
+                <span className="inline-block animate-slide-up" style={{ animationDelay: '0ms' }}>Meet people who</span>
                 <br />
-                <span className="text-sage">feel like home</span>
+                <span className="inline-block text-primary animate-slide-up" style={{ animationDelay: '150ms' }}>feel like home</span>
               </h1>
             </AnimateOnScroll>
 
             {/* Subheadline */}
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="text-xl md:text-2xl text-muted-foreground mb-4">
+              <p className="text-xl md:text-2xl text-muted-foreground mb-4 animate-fade-in-smooth" style={{ animationDelay: '400ms' }}>
                 Real connections. Real moments.
               </p>
             </AnimateOnScroll>
             
             <AnimateOnScroll animation="fade-up" delay={300}>
-              <p className="text-xl md:text-2xl font-semibold text-foreground mb-10">
+              <p className="text-xl md:text-2xl font-semibold text-foreground mb-10 animate-fade-in-smooth" style={{ animationDelay: '550ms' }}>
                 No endless scrolling.
               </p>
             </AnimateOnScroll>
