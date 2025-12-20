@@ -2,9 +2,15 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { WaitlistDialog } from "@/components/WaitlistDialog";
+import AnimatedText from "@/components/AnimatedText";
 
 const HeroSection = () => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+  const [firstLineComplete, setFirstLineComplete] = useState(false);
+
+  // Calculate delay for second line based on first line length
+  const firstLineText = "Meet people who";
+  const firstLineDuration = firstLineText.length * 0.03 + 0.4; // stagger * letters + duration
 
   return (
     <>
@@ -26,16 +32,27 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Headline - Delay: 100ms */}
-            <div className="animate-hero-heading">
-              <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6">
-                Meet people who
-                <br />
-                <span className="text-gradient-animated">feel like home</span>
-              </h1>
-            </div>
+            {/* Headline with letter-by-letter animation */}
+            <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6">
+              <AnimatedText 
+                text={firstLineText}
+                delay={0.1}
+                onComplete={() => setFirstLineComplete(true)}
+              />
+              <br />
+              <span className="text-gradient-animated">
+                {firstLineComplete ? (
+                  <AnimatedText 
+                    text="feel like home"
+                    delay={0}
+                  />
+                ) : (
+                  <span className="opacity-0">feel like home</span>
+                )}
+              </span>
+            </h1>
 
-            {/* Subheadline - Delay: 200ms */}
+            {/* Subheadline - Simple fade up */}
             <div className="animate-hero-subheading">
               <p className="text-xl md:text-2xl text-muted-foreground mb-4">
                 <span className="text-gradient-animated">Real connections.</span> Real moments.
