@@ -1,4 +1,5 @@
 import { Shield, Heart, Zap } from "lucide-react";
+import { AnimateOnScroll } from "@/hooks/useScrollAnimation";
 
 const features = [
   {
@@ -29,7 +30,7 @@ const WhySection = () => {
     <section id="why-companion" className="py-20 md:py-28 bg-background">
       <div className="container px-4 lg:px-8">
         {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <AnimateOnScroll animation="fade-up" className="max-w-3xl mx-auto text-center mb-16">
           <span className="inline-block text-sage font-semibold mb-4">
             Why Companion
           </span>
@@ -46,28 +47,30 @@ const WhySection = () => {
             Companion helps you find people nearby for simple shared activities.
             A walk. Reading together. Chai. Whatever feels right in the moment.
           </p>
-        </div>
+        </AnimateOnScroll>
 
         {/* Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {features.map((feature, index) => (
-            <div
+            <AnimateOnScroll
               key={feature.title}
-              className="group bg-card rounded-3xl p-8 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-2 border border-border/50 animate-fade-up"
-              style={{ animationDelay: `${index * 100}ms` }}
+              animation="fade-up"
+              delay={index * 150}
             >
-              <div
-                className={`w-14 h-14 ${feature.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-              >
-                <feature.icon className="w-7 h-7 text-foreground" />
+              <div className="group bg-card rounded-3xl p-8 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-2 border border-border/50 h-full">
+                <div
+                  className={`w-14 h-14 ${feature.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                >
+                  <feature.icon className="w-7 h-7 text-foreground" />
+                </div>
+                <h3 className="font-heading text-xl font-bold text-foreground mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="font-heading text-xl font-bold text-foreground mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
+            </AnimateOnScroll>
           ))}
         </div>
       </div>
