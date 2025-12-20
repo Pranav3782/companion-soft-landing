@@ -25,7 +25,7 @@ const steps = [
     description:
       "Connect in the real world. Safe, natural, and authentic. No pressure, no pretending.",
     image:
-      "https://images.unsplash.com/photo-1516726817505-f5ed825624d8?q=80&w=1974&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2032&auto=format&fit=crop",
     caption: "Just people being people. 🌿",
   },
 ];
