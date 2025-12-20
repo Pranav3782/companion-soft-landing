@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import { AnimateOnScroll } from "@/hooks/useScrollAnimation";
 
 const differences = [
   {
@@ -39,53 +40,59 @@ const DifferenceSection = () => {
     <section className="py-20 md:py-28 bg-background">
       <div className="container px-4 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
+        <AnimateOnScroll animation="fade-up" className="text-center mb-12">
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
             What Makes Us Different
           </h2>
-        </div>
+        </AnimateOnScroll>
 
         {/* Difference Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-16">
           {differences.map((diff, index) => (
-            <div
+            <AnimateOnScroll
               key={diff.title}
-              className="bg-card rounded-3xl p-6 shadow-soft border border-border/50 animate-fade-up"
-              style={{ animationDelay: `${index * 100}ms` }}
+              animation="fade-up"
+              delay={index * 100}
             >
-              <div className="w-12 h-12 bg-sage rounded-full flex items-center justify-center mb-4">
-                <Check className="w-6 h-6 text-foreground" strokeWidth={3} />
+              <div className="bg-card rounded-3xl p-6 shadow-soft border border-border/50 h-full">
+                <div className="w-12 h-12 bg-sage rounded-full flex items-center justify-center mb-4">
+                  <Check className="w-6 h-6 text-foreground" strokeWidth={3} />
+                </div>
+                <h3 className="font-heading text-lg font-bold text-foreground mb-2">
+                  {diff.title}
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                  {diff.description}
+                </p>
               </div>
-              <h3 className="font-heading text-lg font-bold text-foreground mb-2">
-                {diff.title}
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                {diff.description}
-              </p>
-            </div>
+            </AnimateOnScroll>
           ))}
         </div>
 
         {/* Tagline */}
-        <p className="text-center text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Just small moments that turn into{" "}
-          <span className="text-foreground font-semibold">real memories</span>
-        </p>
+        <AnimateOnScroll animation="fade-up" delay={300} className="mb-12">
+          <p className="text-center text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
+            Just small moments that turn into{" "}
+            <span className="text-foreground font-semibold">real memories</span>
+          </p>
+        </AnimateOnScroll>
 
         {/* Image Gallery */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
           {galleryImages.map((image, index) => (
-            <div
+            <AnimateOnScroll
               key={image.alt}
-              className="relative aspect-square rounded-3xl overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1 animate-fade-up"
-              style={{ animationDelay: `${index * 100}ms` }}
+              animation="scale-in"
+              delay={index * 100}
             >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-              />
-            </div>
+              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                />
+              </div>
+            </AnimateOnScroll>
           ))}
         </div>
       </div>

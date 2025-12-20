@@ -1,3 +1,5 @@
+import { AnimateOnScroll } from "@/hooks/useScrollAnimation";
+
 const steps = [
   {
     number: "1",
@@ -33,7 +35,7 @@ const HowItWorksSection = () => {
     <section id="how-it-works" className="py-20 md:py-28 bg-background">
       <div className="container px-4 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <AnimateOnScroll animation="fade-up" className="text-center mb-16">
           <span className="inline-block text-sage font-semibold mb-4">
             How It Works
           </span>
@@ -42,67 +44,71 @@ const HowItWorksSection = () => {
             <br />
             <span className="text-sage">Real Connections</span>
           </h2>
-        </div>
+        </AnimateOnScroll>
 
         {/* Steps */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {steps.map((step, index) => (
-            <div
+            <AnimateOnScroll
               key={step.number}
-              className="group animate-fade-up"
-              style={{ animationDelay: `${index * 150}ms` }}
+              animation="fade-up"
+              delay={index * 150}
             >
-              <div className="relative rounded-3xl overflow-hidden shadow-soft hover:shadow-medium transition-all duration-500 bg-card border border-border/50">
-                {/* Image with overlay */}
-                <div className="relative h-72 overflow-hidden">
-                  <img
-                    src={step.image}
-                    alt={step.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
-                  
-                  {/* Step Badge */}
-                  <div className="absolute top-4 left-4 flex items-center gap-2">
-                    <div className="w-10 h-10 bg-sage rounded-full flex items-center justify-center font-heading font-bold text-foreground">
-                      {step.number}
+              <div className="group h-full">
+                <div className="relative rounded-3xl overflow-hidden shadow-soft hover:shadow-medium transition-all duration-500 bg-card border border-border/50 h-full flex flex-col">
+                  {/* Image with overlay */}
+                  <div className="relative h-72 overflow-hidden">
+                    <img
+                      src={step.image}
+                      alt={step.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
+                    
+                    {/* Step Badge */}
+                    <div className="absolute top-4 left-4 flex items-center gap-2">
+                      <div className="w-10 h-10 bg-sage rounded-full flex items-center justify-center font-heading font-bold text-foreground">
+                        {step.number}
+                      </div>
+                      <span className="bg-card/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-foreground">
+                        Step {step.number}
+                      </span>
                     </div>
-                    <span className="bg-card/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-foreground">
-                      Step {step.number}
-                    </span>
+
+                    {/* Caption Bubble */}
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="bg-card/95 backdrop-blur-sm rounded-2xl p-3 shadow-soft">
+                        <p className="text-sm text-foreground font-medium">
+                          {step.caption}
+                        </p>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Caption Bubble */}
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="bg-card/95 backdrop-blur-sm rounded-2xl p-3 shadow-soft">
-                      <p className="text-sm text-foreground font-medium">
-                        {step.caption}
-                      </p>
-                    </div>
+                  {/* Content */}
+                  <div className="p-6 flex-1">
+                    <h3 className="font-heading text-xl font-bold text-foreground mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {step.description}
+                    </p>
                   </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="font-heading text-xl font-bold text-foreground mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {step.description}
-                  </p>
                 </div>
               </div>
-            </div>
+            </AnimateOnScroll>
           ))}
         </div>
 
         {/* Bottom tagline */}
-        <p className="text-center text-lg text-muted-foreground mt-12 max-w-xl mx-auto">
-          No pressure. No pretending.{" "}
-          <span className="text-foreground font-medium">
-            Just people being people.
-          </span>
-        </p>
+        <AnimateOnScroll animation="fade-up" delay={450} className="mt-12">
+          <p className="text-center text-lg text-muted-foreground max-w-xl mx-auto">
+            No pressure. No pretending.{" "}
+            <span className="text-foreground font-medium">
+              Just people being people.
+            </span>
+          </p>
+        </AnimateOnScroll>
       </div>
     </section>
   );

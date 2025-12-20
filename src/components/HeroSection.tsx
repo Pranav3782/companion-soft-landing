@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Sparkles, ArrowRight } from "lucide-react";
+import { AnimateOnScroll } from "@/hooks/useScrollAnimation";
 
 const HeroSection = () => {
   return (
@@ -12,39 +13,50 @@ const HeroSection = () => {
       <div className="container relative z-10 px-4 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border rounded-full px-5 py-2.5 mb-8 animate-fade-up shadow-soft">
-            <Sparkles className="w-4 h-4 text-sage" />
-            <span className="text-sm font-medium text-muted-foreground">
-              Join 10,000+ people on the waitlist
-            </span>
-          </div>
+          <AnimateOnScroll animation="fade-up" delay={0}>
+            <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border rounded-full px-5 py-2.5 mb-8 shadow-soft">
+              <Sparkles className="w-4 h-4 text-sage" />
+              <span className="text-sm font-medium text-muted-foreground">
+                Join 10,000+ people on the waitlist
+              </span>
+            </div>
+          </AnimateOnScroll>
 
           {/* Headline */}
-          <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 animate-fade-up animation-delay-100">
-            Meet people who
-            <br />
-            <span className="text-sage">feel like home</span>
-          </h1>
+          <AnimateOnScroll animation="fade-up" delay={100}>
+            <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6">
+              Meet people who
+              <br />
+              <span className="text-sage">feel like home</span>
+            </h1>
+          </AnimateOnScroll>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-4 animate-fade-up animation-delay-200">
-            Real connections. Real moments.
-          </p>
-          <p className="text-xl md:text-2xl font-semibold text-foreground mb-10 animate-fade-up animation-delay-300">
-            No endless scrolling.
-          </p>
+          <AnimateOnScroll animation="fade-up" delay={200}>
+            <p className="text-xl md:text-2xl text-muted-foreground mb-4">
+              Real connections. Real moments.
+            </p>
+          </AnimateOnScroll>
+          
+          <AnimateOnScroll animation="fade-up" delay={300}>
+            <p className="text-xl md:text-2xl font-semibold text-foreground mb-10">
+              No endless scrolling.
+            </p>
+          </AnimateOnScroll>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up animation-delay-400">
-            <Button variant="hero" size="lg" className="w-full sm:w-auto">
-              Join the waitlist
-              <Sparkles className="w-5 h-5 ml-1" />
-            </Button>
-            <Button variant="hero-outline" size="lg" className="w-full sm:w-auto">
-              Learn More
-              <ArrowRight className="w-5 h-5 ml-1" />
-            </Button>
-          </div>
+          <AnimateOnScroll animation="fade-up" delay={400}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button variant="hero" size="lg" className="w-full sm:w-auto">
+                Join the waitlist
+                <Sparkles className="w-5 h-5 ml-1" />
+              </Button>
+              <Button variant="hero-outline" size="lg" className="w-full sm:w-auto">
+                Learn More
+                <ArrowRight className="w-5 h-5 ml-1" />
+              </Button>
+            </div>
+          </AnimateOnScroll>
         </div>
       </div>
 
