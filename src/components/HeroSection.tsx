@@ -6,7 +6,6 @@ import AnimatedText from "@/components/AnimatedText";
 
 const HeroSection = () => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
-  const [firstLineComplete, setFirstLineComplete] = useState(false);
 
   // Calculate delay for second line based on first line length
   const firstLineText = "Meet people who";
@@ -37,18 +36,13 @@ const HeroSection = () => {
               <AnimatedText 
                 text={firstLineText}
                 delay={0.1}
-                onComplete={() => setFirstLineComplete(true)}
               />
               <br />
               <span className="text-gradient-animated">
-                {firstLineComplete ? (
-                  <AnimatedText 
-                    text="feel like home"
-                    delay={0}
-                  />
-                ) : (
-                  <span className="opacity-0">feel like home</span>
-                )}
+                <AnimatedText 
+                  text="feel like home"
+                  delay={firstLineDuration + 0.1}
+                />
               </span>
             </h1>
 
