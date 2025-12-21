@@ -9,7 +9,7 @@ const HeroSection = () => {
 
   // Calculate delay for second line based on first line length
   const firstLineText = "Meet people who";
-  const firstLineDuration = firstLineText.length * 0.03 + 0.4; // stagger * letters + duration
+  const firstLineDuration = firstLineText.length * 0.025 + 0.3; // slightly faster stagger
 
   return (
     <>
