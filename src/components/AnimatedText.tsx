@@ -3,11 +3,18 @@ import { motion, useReducedMotion } from "framer-motion";
 interface AnimatedTextProps {
   text: string;
   className?: string;
+  letterClassName?: string;
   delay?: number;
   onComplete?: () => void;
 }
 
-const AnimatedText = ({ text, className = "", delay = 0, onComplete }: AnimatedTextProps) => {
+const AnimatedText = ({
+  text,
+  className = "",
+  letterClassName = "",
+  delay = 0,
+  onComplete,
+}: AnimatedTextProps) => {
   const shouldReduceMotion = useReducedMotion();
 
   const letters = text.split("");
@@ -42,7 +49,7 @@ const AnimatedText = ({ text, className = "", delay = 0, onComplete }: AnimatedT
 
   // Respect reduced motion preference
   if (shouldReduceMotion) {
-    return <span className={className}>{text}</span>;
+    return <span className={`${className} ${letterClassName}`.trim()}>{text}</span>;
   }
 
   return (
@@ -58,10 +65,10 @@ const AnimatedText = ({ text, className = "", delay = 0, onComplete }: AnimatedT
         <motion.span
           key={index}
           variants={child}
-          className="inline-block"
-          style={{ 
+          className={`inline-block ${letterClassName}`.trim()}
+          style={{
             whiteSpace: letter === " " ? "pre" : "normal",
-            willChange: "transform, opacity, filter"
+            willChange: "transform, opacity, filter",
           }}
         >
           {letter === " " ? "\u00A0" : letter}

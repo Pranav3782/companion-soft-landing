@@ -38,12 +38,11 @@ const HeroSection = () => {
                 delay={0.1}
               />
               <br />
-              <span className="text-gradient-animated">
-                <AnimatedText 
-                  text="feel like home"
-                  delay={firstLineDuration + 0.1}
-                />
-              </span>
+              <AnimatedText 
+                text="feel like home"
+                delay={firstLineDuration + 0.1}
+                letterClassName="text-gradient-animated"
+              />
             </h1>
 
             {/* Subheadline - Simple fade up */}
